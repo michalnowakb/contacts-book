@@ -5,6 +5,7 @@ import com.mjn.contactsbook.model.Contact;
 import com.mjn.contactsbook.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,7 +51,8 @@ public class ContactController {
         }
     }
 
-    @PostMapping("/contacts")
+    @PostMapping(value = "/contacts", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Contact> createContact(@RequestBody Contact contact) {
         try {
             Contact _contact = contactRepository
@@ -61,7 +63,8 @@ public class ContactController {
         }
     }
 
-    @PutMapping("/contacts/{id}")
+    @PutMapping(value = "/contacts/{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Contact> updateContact(@PathVariable("id") long id, @RequestBody Contact contact) {
         Optional<Contact> contactData = contactRepository.findById(id);
 
