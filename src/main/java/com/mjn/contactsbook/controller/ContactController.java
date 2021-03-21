@@ -61,6 +61,31 @@ public class ContactController {
         }
     }
 
+    @PutMapping("/contacts/{id}")
+    public ResponseEntity<Contact> updateContact(@PathVariable("id") long id, @RequestBody Contact contact) {
+        Optional<Contact> contactData = contactRepository.findById(id);
+
+        if (contactData.isPresent()) {
+            Contact _contact = contactData.get();
+            _contact.setName(contact.getName());
+            _contact.setSurname(contact.getSurname());
+            _contact.setEmail(contact.getEmail());
+            _contact.setNumber(contact.getNumber());
+            return new ResponseEntity<>(contactRepository.save(_contact), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping("/contacts/{id}")
+    public ResponseEntity<Contact> deleteContactById(@PathVariable("id") long id) {
+        try {
+            contactRepository.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 
 }
