@@ -19,7 +19,7 @@ import java.util.Optional;
 public class ContactController {
 
     @Autowired
-    ContactRepository contactRepository;
+    private ContactRepository contactRepository;
 
 
     //Method that returns list of all contacts
