@@ -13,4 +13,7 @@ Application is allowing user to CREATE,READ,UPDATE and DELETE data from database
 
 ##############################################################################
 
+To RUN application we have to run "ContactsBookApplication" class.
+
+
 Default address is set to: http://localhost:8080
