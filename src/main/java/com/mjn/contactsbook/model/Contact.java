@@ -2,10 +2,13 @@ package com.mjn.contactsbook.model;
 
 import javax.persistence.*;
 
+
+// CREATING NEW TABLE "contacts"
 @Entity
 @Table(name = "contacts")
 public class Contact {
 
+    // Blueprint for class Contact
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
