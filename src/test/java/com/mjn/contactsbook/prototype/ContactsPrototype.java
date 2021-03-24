@@ -12,4 +12,5 @@ public class ContactsPrototype {
         contact.setNumber("8756781231");
         return contact;
     }
+
 }

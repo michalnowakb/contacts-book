@@ -18,7 +18,7 @@ import java.util.Optional;
 public class ContactController {
 
     @Autowired
-    ContactRepository contactRepository;
+    private ContactRepository contactRepository;
 
     @GetMapping("/contacts")
     public ResponseEntity<List<Contact>> getAllContacts(@RequestParam(required = false) String name) {
