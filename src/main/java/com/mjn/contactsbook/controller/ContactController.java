@@ -21,6 +21,8 @@ public class ContactController {
     @Autowired
     ContactRepository contactRepository;
 
+
+    //Method that returns list of all contacts
     @GetMapping("/contacts")
     public ResponseEntity<List<Contact>> getAllContacts(@RequestParam(required = false) String name) {
         try {
@@ -40,6 +42,7 @@ public class ContactController {
         }
     }
 
+    //Method that returns specific contact
     @GetMapping("contacts/{id}")
     public ResponseEntity<Contact> getContactById(@PathVariable("id") long id) {
         Optional<Contact> contactData = contactRepository.findById(id);
@@ -51,6 +54,7 @@ public class ContactController {
         }
     }
 
+    //Method to create/add new contact to user contacts list
     @PostMapping(value = "/contacts", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Contact> createContact(@RequestBody Contact contact) {
@@ -63,6 +67,8 @@ public class ContactController {
         }
     }
 
+
+    //Method to update an existing contact
     @PutMapping(value = "/contacts/{id}", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Contact> updateContact(@PathVariable("id") long id, @RequestBody Contact contact) {
@@ -80,6 +86,8 @@ public class ContactController {
         }
     }
 
+
+    //Method to delete contact
     @DeleteMapping("/contacts/{id}")
     public ResponseEntity<Contact> deleteContactById(@PathVariable("id") long id) {
         try {
